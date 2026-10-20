@@ -12,6 +12,7 @@ import android.os.PowerManager;
 import android.provider.Settings;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -31,17 +32,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tvStatus = findViewById(R.id.tv_main_status);
 
+        // Handle back press — minimize app instead of closing (Android 16 compatible)
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                moveTaskToBack(true);
+            }
+        });
+
         SharedPreferences prefs = getSharedPreferences("mdtrace", Context.MODE_PRIVATE);
         boolean setupDone = prefs.getBoolean("setup_done", false);
 
         if (!setupDone) {
-            // First launch — go to setup
             startActivity(new Intent(this, SetupActivity.class));
             finish();
             return;
         }
 
-        // Setup done — check permissions and start GPS
         requestAllPermissions();
     }
 
@@ -74,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onPermissionsGranted() {
-        // Background location (Android 10+)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION)
                     != PackageManager.PERMISSION_GRANTED) {
@@ -83,10 +89,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Battery optimization — ask to ignore
         requestIgnoreBatteryOptimization();
 
-        // Start GPS service
         Intent svc = new Intent(this, GpsService.class);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) startForegroundService(svc);
         else startService(svc);
@@ -107,11 +111,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         } catch (Exception ignored) {}
-    }
-
-    @Override
-    public void onBackPressed() {
-        // Disable back button — ऐप को minimize करो, close नहीं
-        moveTaskToBack(true);
     }
 }
