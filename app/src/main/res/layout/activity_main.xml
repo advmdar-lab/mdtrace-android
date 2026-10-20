@@ -28,7 +28,7 @@
         android:layout_marginBottom="8dp"/>
 
     <TextView
-        android:text="Family Safety · GPS Tracking"
+        android:text="@string/main_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#9fa8da"
@@ -39,7 +39,7 @@
         android:id="@+id/tv_main_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="⏳ Starting GPS…"
+        android:text="@string/main_starting"
         android:textColor="#a5d6a7"
         android:textSize="16sp"
         android:gravity="center"
@@ -50,7 +50,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="🛡️ यह ऐप परिवार की सुरक्षा के लिए है।\nLocation हमेशा private रहती है।"
+        android:text="@string/main_footer"
         android:textColor="#7986cb"
         android:textSize="12sp"
         android:gravity="center"
