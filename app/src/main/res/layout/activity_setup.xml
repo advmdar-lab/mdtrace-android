@@ -38,7 +38,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="MDTrace Setup"
+                    android:text="@string/setup_title"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     android:textStyle="bold"/>
@@ -46,7 +46,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Family Safety GPS"
+                    android:text="@string/setup_subtitle"
                     android:textColor="#9fa8da"
                     android:textSize="13sp"/>
             </LinearLayout>
@@ -55,7 +55,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="क्या करना है?"
+            android:text="@string/what_to_do"
             android:textSize="14sp"
             android:textColor="#555555"
             android:textStyle="bold"
@@ -73,7 +73,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="नया परिवार बनाएँ"
+                android:text="@string/mode_create"
                 android:checked="true"
                 android:textSize="13sp"
                 android:padding="12dp"/>
@@ -83,7 +83,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="परिवार से जुड़ें"
+                android:text="@string/mode_join"
                 android:textSize="13sp"
                 android:padding="12dp"/>
         </RadioGroup>
@@ -91,7 +91,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="आपका नाम"
+            android:text="@string/label_name"
             android:textSize="13sp"
             android:textColor="#333333"
             android:textStyle="bold"
@@ -101,7 +101,7 @@
             android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="पूरा नाम लिखें"
+            android:hint="@string/hint_name"
             android:inputType="textPersonName"
             android:background="@drawable/input_bg"
             android:padding="14dp"
@@ -111,7 +111,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="मोबाइल नंबर (10 अंक)"
+            android:text="@string/label_phone"
             android:textSize="13sp"
             android:textColor="#333333"
             android:textStyle="bold"
@@ -121,7 +121,7 @@
             android:id="@+id/et_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="10-digit number"
+            android:hint="@string/hint_phone"
             android:inputType="phone"
             android:maxLength="10"
             android:background="@drawable/input_bg"
@@ -133,7 +133,7 @@
             android:id="@+id/lbl_family"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="परिवार का नाम"
+            android:text="@string/label_family"
             android:textSize="13sp"
             android:textColor="#333333"
             android:textStyle="bold"
@@ -143,7 +143,7 @@
             android:id="@+id/et_family_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="e.g. Islam Family"
+            android:hint="@string/hint_family"
             android:inputType="textCapWords"
             android:background="@drawable/input_bg"
             android:padding="14dp"
@@ -154,7 +154,7 @@
             android:id="@+id/et_invite_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="6-letter invite code (e.g. AB1C2D)"
+            android:hint="@string/hint_invite"
             android:inputType="textCapCharacters"
             android:maxLength="6"
             android:background="@drawable/input_bg"
@@ -169,7 +169,7 @@
             android:id="@+id/btn_action"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="✨ Create Family &amp; Start"
+            android:text="@string/btn_create"
             android:backgroundTint="#1a237e"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
@@ -197,7 +197,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ℹ️ एक बार सेटअप होने के बाद:\n• GPS हमेशा background में चलेगा\n• Phone restart पर भी automatically शुरू होगा\n• परिवार का admin आपकी location देख सकेगा"
+                android:text="@string/setup_info"
                 android:textSize="13sp"
                 android:textColor="#2e7d32"
                 android:lineSpacingExtra="4dp"/>
