@@ -173,7 +173,8 @@ public class GpsService extends Service {
         return new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("MDTrace — Family Safety")
                 .setContentText(text)
-.setSmallIcon(android.R.drawable.ic_dialog_map) 
+.setSmallIcon(android.R.drawable.ic_menu_compass)  
+            
             .setContentIntent(pi)
                 .setOngoing(true)      // Can't be dismissed
                 .setPriority(NotificationCompat.PRIORITY_LOW)
