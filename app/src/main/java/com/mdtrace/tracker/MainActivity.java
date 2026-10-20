@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tvStatus = findViewById(R.id.tv_main_status);
 
-        // Handle back press — minimize app instead of closing (Android 16 compatible)
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
@@ -76,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         for (int r : results) if (r != PackageManager.PERMISSION_GRANTED) { allOk = false; break; }
         if (allOk) onPermissionsGranted();
         else {
-            tvStatus.setText("⚠️ Location permission ज़रूरी है।\nPhone Settings → Apps → MDTrace → Permissions → Location → Allow all the time");
+            tvStatus.setText(R.string.perm_needed);
         }
     }
 
@@ -97,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences prefs = getSharedPreferences("mdtrace", Context.MODE_PRIVATE);
         String name = prefs.getString("name", "Member");
-        tvStatus.setText("✅ " + name + " का GPS चालू है\n\nLocation हर 30 सेकंड में भेजी जा रही है।\n\n🛡️ यह ऐप बंद नहीं किया जा सकता।");
+        tvStatus.setText(getString(R.string.gps_active, name));
     }
 
     private void requestIgnoreBatteryOptimization() {
