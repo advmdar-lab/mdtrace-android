@@ -47,18 +47,18 @@ public class SetupActivity extends AppCompatActivity {
             isJoinMode = (checkedId == R.id.rb_join);
             etFamilyName.setVisibility(isJoinMode ? View.GONE  : View.VISIBLE);
             etInviteCode.setVisibility(isJoinMode ? View.VISIBLE : View.GONE);
-            btnAction.setText(isJoinMode ? "🔗 Join Family" : "✨ Create Family & Start");
+            btnAction.setText(isJoinMode ? R.string.btn_join : R.string.btn_create);
         });
 
         btnAction.setOnClickListener(v -> {
             String name  = etName.getText().toString().trim();
             String phone = etPhone.getText().toString().trim();
             if (name.isEmpty() || phone.length() != 10) {
-                Toast.makeText(this, "नाम और 10 अंकों का नंबर भरें", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.err_name_phone, Toast.LENGTH_SHORT).show();
                 return;
             }
             btnAction.setEnabled(false);
-            tvStatus.setText("⏳ Processing…");
+            tvStatus.setText(R.string.processing);
             if (isJoinMode) doJoin(name, phone);
             else doRegister(name, phone);
         });
@@ -66,7 +66,7 @@ public class SetupActivity extends AppCompatActivity {
 
     private void doRegister(String name, String phone) {
         String fName = etFamilyName.getText().toString().trim();
-        if (fName.isEmpty()) { tvStatus.setText("❌ Family name भरें"); btnAction.setEnabled(true); return; }
+        if (fName.isEmpty()) { tvStatus.setText(R.string.err_family_name); btnAction.setEnabled(true); return; }
         new Thread(() -> {
             try {
                 JSONObject body = new JSONObject();
@@ -87,7 +87,7 @@ public class SetupActivity extends AppCompatActivity {
 
     private void doJoin(String name, String phone) {
         String code = etInviteCode.getText().toString().trim().toUpperCase();
-        if (code.isEmpty()) { tvStatus.setText("❌ Invite code भरें"); btnAction.setEnabled(true); return; }
+        if (code.isEmpty()) { tvStatus.setText(R.string.err_invite); btnAction.setEnabled(true); return; }
         new Thread(() -> {
             try {
                 JSONObject body = new JSONObject();
@@ -117,11 +117,9 @@ public class SetupActivity extends AppCompatActivity {
             ed.apply();
 
             runOnUiThread(() -> {
-                tvStatus.setText("✅ सेटअप हो गया! GPS शुरू हो रहा है…");
-                // Start GPS service
+                tvStatus.setText(R.string.setup_done);
                 Intent svc = new Intent(this, GpsService.class);
                 startForegroundService(svc);
-                // Open main activity
                 startActivity(new Intent(this, MainActivity.class));
                 finish();
             });
