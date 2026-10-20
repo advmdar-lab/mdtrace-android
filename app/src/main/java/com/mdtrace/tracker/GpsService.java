@@ -51,7 +51,7 @@ public class GpsService extends Service {
         handler = new Handler(Looper.getMainLooper());
         fusedClient = LocationServices.getFusedLocationProviderClient(this);
         createNotificationChannel();
-        startForeground(NOTIF_ID, buildNotification("MDTrace चालू है — Location tracking active"));
+        startForeground(NOTIF_ID, buildNotification(getString(R.string.notification_text)));
         startLocationUpdates();
         schedulePeriodicSend();
     }
@@ -171,12 +171,11 @@ public class GpsService extends Service {
                 PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
 
         return new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("MDTrace — Family Safety")
+                .setContentTitle(getString(R.string.notification_title))
                 .setContentText(text)
-.setSmallIcon(android.R.drawable.ic_menu_compass)  
-            
-            .setContentIntent(pi)
-                .setOngoing(true)      // Can't be dismissed
+                .setSmallIcon(android.R.drawable.ic_menu_compass)
+                .setContentIntent(pi)
+                .setOngoing(true)
                 .setPriority(NotificationCompat.PRIORITY_LOW)
                 .setSilent(true)
                 .build();
@@ -192,8 +191,11 @@ public class GpsService extends Service {
         super.onDestroy();
         if (locationCallback != null) fusedClient.removeLocationUpdates(locationCallback);
         handler.removeCallbacksAndMessages(null);
-        // Restart self immediately
-        Intent restart = new Intent(this, GpsService.class);
-        startService(restart);
+        try {
+            Intent restart = new Intent(this, GpsService.class);
+            startService(restart);
+        } catch (Exception e) {
+            Log.e(TAG, "Restart failed: " + e.getMessage());
+        }
     }
 }
