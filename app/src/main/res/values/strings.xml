@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MDTrace</string>
-    <string name="notification_title">MDTrace — Family Safety GPS</string>
-    <string name="notification_text">Location tracking is active</string>
+    <string name="notification_title">MDTrace — Family Safety</string>
+    <string name="notification_text">MDTrace is active — location tracking on</string>
+
+    <string name="setup_title">MDTrace Setup</string>
+    <string name="setup_subtitle">Family Safety GPS</string>
+    <string name="what_to_do">What do you want to do?</string>
+    <string name="mode_create">Create new family</string>
+    <string name="mode_join">Join a family</string>
+    <string name="label_name">Your name</string>
+    <string name="hint_name">Enter full name</string>
+    <string name="label_phone">Mobile number (10 digits)</string>
+    <string name="hint_phone">10-digit number</string>
+    <string name="label_family">Family name</string>
+    <string name="hint_family">e.g. Islam Family</string>
+    <string name="hint_invite">6-letter invite code (e.g. AB1C2D)</string>
+    <string name="btn_create">✨ Create Family &amp; Start</string>
+    <string name="btn_join">🔗 Join Family</string>
+    <string name="setup_info">ℹ️ After setup:\n• GPS will run in the background\n• It will start automatically after a phone restart\n• Your family admin can see your location</string>
+
+    <string name="err_name_phone">Enter your name and a 10-digit number</string>
+    <string name="processing">⏳ Processing…</string>
+    <string name="err_family_name">❌ Enter family name</string>
+    <string name="err_invite">❌ Enter invite code</string>
+    <string name="setup_done">✅ Setup complete! Starting GPS…</string>
+
+    <string name="main_subtitle">Family Safety · GPS Tracking</string>
+    <string name="main_starting">⏳ Starting GPS…</string>
+    <string name="main_footer">🛡️ This app is for family safety.\nLocation is shared only with your family.</string>
+    <string name="perm_needed">⚠️ Location permission is required.\nPhone Settings → Apps → MDTrace → Permissions → Location → Allow all the time</string>
+    <string name="gps_active">✅ GPS is active for %1$s\n\nLocation is sent every 30 seconds.\n\n🛡️ Tracking keeps running in the background.</string>
 </resources>
